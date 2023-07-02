@@ -4,18 +4,18 @@
         <meta charset="utf-8">
         <meta name=""viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>{% block title %} {% endblock %} | Puddle </title>
+        <title>{% block title %} {% endblock %} | Optic 10 000 </title>
 
     </head>
     <body>
         <nav class="py-6 px-6 flex justify-between items-center border-b border-grey-200">
-            <a href="/" class="text-xl font-semibold "> Puddle </a>
+            <a href="/" class="text-xl font-semibold "> Optic 10 000  </a>
             <div class="space-x-6">
                 <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-gray-500"> New item</a>
                 <a href="{% url 'item:items' %}" class="text-lg font-semibold hover:text-gray-500"> Browse </a>
 
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"> Inbox</a>
+                <a href="{% url 'conversation:inbox' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"> Inbox</a>
                 <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-teal-700"> Dashboard </a>
                 {% else %}
                 <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"> Sign up</a>

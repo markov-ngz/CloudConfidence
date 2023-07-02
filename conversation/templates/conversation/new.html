@@ -1,9 +1,8 @@
 {% extends 'core/base.html' %}
-{% block title %} {{ title }} {% endblock %}
+{% block title %} New conversation {% endblock %}
 {% block content %}
-<div class="w-1/2 p-6 mu-6 mx-auto bg-gray-100 rounded-xl">
-    <h1 class="mb-6 text-3xl"> {{ title }} </h1>
-    <form method="post" action="." enctype="multipart/form-data" >
+    <h1 class="mb-6 text-3xl"> New Conversation</h1>
+    <form method="post" action="." >
         {% csrf_token %}
             <div class="space-y-4">
                 {{ form.as_p }}
@@ -17,8 +16,6 @@
                 </div>
             {% endif %}
 
-        <button class=" mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white"> Submit </button>
+        <button class=" mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white"> Send </button>
     </form>
-
-</div>
 {% endblock %}
