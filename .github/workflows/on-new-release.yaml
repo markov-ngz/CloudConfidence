@@ -1,0 +1,23 @@
+name: New release deployed
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+  pages: write
+
+on:
+  release:
+    types:
+      - created
+jobs:
+
+  publish-lib:
+    uses: ./.github/workflows/_publish-library.yaml
+    with:
+      working-directory: "."
+
+  javadoc:
+    uses: ./.github/workflows/_javadoc-pages.yaml
+    secrets:
+      ghp-read-package: ${{ secrets.GH_READ_PACKAGE }}

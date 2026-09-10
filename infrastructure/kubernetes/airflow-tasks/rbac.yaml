@@ -1,0 +1,78 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: airflow-kubernetes-pod-operator
+  namespace: airflow-tasks
+
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - delete
+      - patch
+
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs:
+      - get
+      - list
+      - watch
+
+  - apiGroups: [""]
+    resources: ["pods/status"]
+    verbs:
+      - get
+
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs:
+      - get
+      - create
+
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs:
+      - get
+      - list
+      - watch
+
+  - apiGroups:
+      - sparkoperator.k8s.io
+    resources:
+      - sparkapplications
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - delete
+      - patch
+
+  - apiGroups:
+      - sparkoperator.k8s.io
+    resources:
+      - sparkapplications/status
+    verbs:
+      - get
+
+
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: airflow-kubernetes-pod-operator
+  namespace: airflow-tasks
+subjects:
+  - kind: ServiceAccount
+    name: airflow-worker
+    namespace: airflow
+roleRef:
+  kind: Role
+  name: airflow-kubernetes-pod-operator
+  apiGroup: rbac.authorization.k8s.io

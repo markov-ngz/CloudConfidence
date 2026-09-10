@@ -1,0 +1,27 @@
+name: Linting python code
+
+on:
+  workflow_call:
+    inputs:
+      linting_path:
+        type: string
+        required: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version-file: "tools/black/.python-version"
+
+      - name: Install dependencies
+        run: pip install -r tools/black/requirements-ci.txt
+
+      - name: Run Black
+        run: |
+          black --check ${{ inputs.linting_path }}

@@ -1,0 +1,72 @@
+models:
+  - name: SeedMeteoFranceObservationVariable
+    materialized: file
+    location: "input/referentiels/meteofrance_observation_variable.csv"
+    file_format: csv
+    read_options:
+      header: true
+      delimiter: ";"
+
+  - name: SeedMeteoFranceStation
+    materialized: file
+    location: "input/referentiels/meteofrance_stations.csv"
+    file_format: csv
+    read_options:
+      header: true
+      delimiter: ";"
+
+  - name: SeedStandardizedUnit
+    materialized: file
+    location: "input/referentiels/standardized_unit.csv"
+    file_format: csv
+    read_options:
+      header: true
+      delimiter: ";"
+
+  - name: SeedStandardizedVariable
+    materialized: file
+    location: "input/referentiels/standardized_variable.csv"
+    file_format: csv
+    read_options:
+      header: true
+      delimiter: ";"
+
+  - name: SourceMeteoFrancePaquet
+    materialized: file
+    location: "/home/markov/Documents/cloudconfidence/sp1/09_02/"
+    file_format: parquet
+
+  - name: SourceMeteoFranceObservation
+    materialized: file
+    location: "/home/markov/Documents/cloudconfidence/obs/"
+    file_format: csv
+    read_options:
+      header: true
+      delimiter: ";"
+  - name: StgMeteoFranceObservationModel
+    materialized: ephemeral
+#    materialized: table
+#    location: staging.stg_meteo_france_observation
+
+  - name: StgMeteoFrancePaquetModel
+    materialized: ephemeral
+
+  - name: IntStationGridMappingModel
+    materialized: ephemeral
+
+  - name: IntUnpivotObservationModel
+    materialized: ephemeral
+
+  - name: IntStationForecastObservationModel
+    materialized: ephemeral
+
+  - name: IntAggForecastErrorOverTimeModel
+    materialized: ephemeral
+
+  - name: MartForecastErrorOverTimeModel
+    materialized: file
+    location: "./ouput/observation/sp1_output"
+    file_format: csv
+    write_options:
+      header: true
+      delimiter: ";"

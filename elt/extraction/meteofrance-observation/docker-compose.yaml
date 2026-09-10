@@ -1,0 +1,10 @@
+services:
+  extract-meteofrance-observation:
+    container_name: debug-extract-meteofrance-observation
+    image: extraction-meteofrance-observation:0.1.0
+    command:
+      - "etl.jobid=EXTRACT-MFOBS"
+      - "etl.source.departmentids=988"
+      - "etl.source.format=csv"
+    env_file:
+      - .env

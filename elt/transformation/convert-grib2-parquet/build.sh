@@ -1,0 +1,1 @@
+docker build -t conversion-grib2-parquet:0.1.0 .

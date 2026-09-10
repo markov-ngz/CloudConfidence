@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-log-generator
+  namespace: airflow-tasks  # Ensure this matches your target namespace
+  labels:
+    app: random-log-generator
+spec:
+  containers:
+    - name: log-generator
+      image: busybox:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          while true; do
+            # Generate a random log message with pod name and timestamp
+            echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Random log from pod $(hostname) - Message: $(shuf -n 1 /usr/share/dict/words 2>/dev/null || echo 'test-message')"
+            sleep 2
+          done
+      resources:
+        limits:
+          cpu: "0.1"
+          memory: "64Mi"
+  restartPolicy: Never

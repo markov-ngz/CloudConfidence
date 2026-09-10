@@ -1,0 +1,54 @@
+name: Publish javadoc to github pages
+
+permissions:
+  contents: read
+  packages: read
+  id-token: write
+  pages: write
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        type: string
+        description: working directory
+        default: "."
+    secrets:
+      ghp-read-package:
+        required: true
+jobs:
+  javadoc:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: ${{ inputs.working-directory }}/pom.xml
+
+      - name: Setup Maven Auth for GitHub Packages
+        uses: ./.github/actions/maven-settings
+        with:
+          output-path: ~/.m2/settings.xml
+          github-token: ${{ secrets.ghp-read-package || github.token }}
+
+      - name: Generate Javadoc
+        run: mvn -B javadoc:aggregate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Javadoc as Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ inputs.working-directory }}/target/site/apidocs/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

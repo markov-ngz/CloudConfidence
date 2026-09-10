@@ -1,0 +1,35 @@
+name: Main App CI
+
+permissions:
+  contents: read
+  packages: read
+  id-token: write
+
+on:
+   push:
+     branches:
+       - mainn
+     paths-ignore:
+       - 'docs/**'
+       - '**/*.md'
+   workflow_dispatch:
+     inputs:
+       working-directory:
+         type: string
+         description: working directory
+
+jobs:
+  software-composition-analysis:
+    uses: ./.github/workflows/_sca.yaml
+    with:
+      working-directory: ${{ inputs.working-directory || './libs' }}
+
+  maven-build-test:
+    needs:
+      - software-composition-analysis
+    uses: ./.github/workflows/_maven-build-test.yaml
+    with:
+      working-directory: ${{ inputs.working-directory || './libs' }}
+      java-version: '21'
+    secrets:
+      ghp-read-package: ${{ secrets.GH_READ_PACKAGE }}

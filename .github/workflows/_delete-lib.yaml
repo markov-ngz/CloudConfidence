@@ -1,0 +1,26 @@
+name: Delete lib
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: "Package name"
+        required: true
+        type: string
+
+jobs:
+  delete_lib:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: delete existing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            /user/packages/maven/${{ inputs.package_name }}

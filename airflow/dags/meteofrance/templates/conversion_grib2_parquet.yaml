@@ -1,0 +1,47 @@
+# meteofrance_pod_template.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: conversion-grib2-parquet
+  namespace: airflow-tasks
+  labels:
+    app: conversion-grib2-parquet
+spec:
+  containers:
+    - name: base
+      image: conversion-grib2-parquet:0.1.0
+      imagePullPolicy: Never
+      resources:
+        requests:
+          cpu: "0.5"
+        limits:
+          cpu: "2"
+      env:
+        - name: ETL_JOBID
+          value: CONV_GRIB2_PARQUET
+
+        - name: ETL_HADOOP_FS_S3A_AWS_CREDENTIALS_PROVIDER
+          value: software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider
+
+        - name: ETL_OUTPUTDIR
+          value: s3://cloudconfidence414-landing-zone/conversion/meteofrance-paquet/grib2-parquet/
+
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key_id
+
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_access_key
+
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_region
+
+  restartPolicy: Never

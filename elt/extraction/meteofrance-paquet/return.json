@@ -1,0 +1,646 @@
+{
+  "data": {
+    "failures": [],
+    "successes": [
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655493_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_0.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "0",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655493_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_0.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655494_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_1.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "1",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655494_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_1.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655494_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_2.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "2",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655494_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_2.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655495_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_3.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "3",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655495_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_3.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655495_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_4.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "4",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655495_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_4.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_5.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "5",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_5.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_6.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "6",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_6.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_7.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "7",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655496_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_7.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_8.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "8",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_8.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_9.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "9",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_9.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_10.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "10",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655497_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_10.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655498_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_11.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "11",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655498_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_11.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655498_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_12.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "12",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655498_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_12.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_13.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "13",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_13.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_14.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "14",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_14.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_15.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "15",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655499_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_15.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_16.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "16",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_16.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_17.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "17",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_17.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_18.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "18",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655500_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_18.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_19.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "19",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_19.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_20.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "20",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_20.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_21.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "21",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655501_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_21.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655502_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_22.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "22",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655502_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_22.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655502_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_23.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "23",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655502_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_23.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_24.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "24",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_24.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_25.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "25",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_25.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_26.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "26",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655503_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_26.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655504_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_27.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "27",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655504_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_27.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655504_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_28.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "28",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655504_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_28.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_29.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "29",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_29.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_30.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "30",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_30.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_31.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "31",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655505_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_31.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_32.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "32",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_32.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_33.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "33",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_33.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_34.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "34",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655506_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_34.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_35.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "35",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_35.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_36.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "36",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_36.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_37.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "37",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655507_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_37.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655508_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_38.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "38",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655508_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_38.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655508_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_39.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "39",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655508_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_39.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_40.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "40",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_40.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_41.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "41",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_41.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_42.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "42",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655509_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_42.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_43.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "43",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_43.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_44.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "44",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_44.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_45.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "45",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655510_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_45.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_46.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "46",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_46.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_47.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "47",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_47.grib2"
+      },
+      {
+        "filename": "extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_48.grib2",
+        "format": "grib2",
+        "metadata": {
+          "grid": "0.025",
+          "package": "SP1",
+          "time": "48",
+          "referenceTime": "2026-07-21T00:00:00Z",
+          "previnum": "DPPaquetAROME-OM",
+          "model": "AROME-OM-NCALED"
+        },
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784655511_AROME-OM-NCALED_0025_SP1_2026-07-21T000000Z_48.grib2"
+      }
+    ]
+  },
+  "object": "ngz.cloudconfidence.elt.extraction.ExtractionResult",
+  "status": "success"
+}

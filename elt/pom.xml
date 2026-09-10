@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+		 xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ngz.cloudconfidence</groupId>
+	<artifactId>parent-pom</artifactId>
+	<version>2</version>
+
+	<name>Markov :</name>
+	<packaging>pom</packaging>
+	<url>https://github.com/markov-ngz</url>
+
+	<modules>
+	</modules>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+  <repositories>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/markov-ngz/cloudconfidence</url>
+    </repository>
+  </repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<source.java.version>21</source.java.version>
+		<target.java.version>21</target.java.version>
+		<maven.compiler.source>${source.java.version}</maven.compiler.source>
+		<maven.compiler.target>${target.java.version}</maven.compiler.target>
+
+		<checkstyle.version>9.3</checkstyle.version>
+
+		<slf4j.version>1.7.36</slf4j.version>
+		<log4j.version>2.24.3</log4j.version>
+
+		<spotless.skip>false</spotless.skip>
+		<spotless.version>3.9.0</spotless.version>
+		<spotless.delimiter>package</spotless.delimiter>
+		<test.skip.coverage>true</test.skip.coverage>
+		<test.unit.pattern>**/*Test.*</test.unit.pattern>
+
+		<junit5.version>5.9.1</junit5.version>
+        <mockito.version>3.4.6</mockito.version>
+        <assertj.version>3.27.7</assertj.version>
+		
+        <argLine/>
+        <extraJavaTestArgs>
+        </extraJavaTestArgs>
+
+	</properties>
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+            <!-- <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-bom</artifactId>
+                <version>7.34.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency> -->
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit5.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-core</artifactId>
+				<version>${assertj.version}</version>
+				<scope>test</scope>
+			</dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+<!--			<dependency>-->
+<!--				<groupId>org.slf4j</groupId>-->
+<!--				<artifactId>slf4j-reload4j</artifactId>-->
+<!--				<version>${slf4j.version}</version>-->
+<!--			</dependency>-->
+		</dependencies>
+	</dependencyManagement>
+
+	<profiles>
+		<profile>
+			<id>test-coverage</id>
+			<properties>
+				<test.skip.coverage>false</test.skip.coverage>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <trimStackTrace>false</trimStackTrace>
+                    <systemPropertyVariables>
+
+                        <project.basedir>${project.basedir}</project.basedir>
+                        <!--suppress MavenModelInspection -->
+                        <test.randomization.seed>${test.randomization.seed}
+                        </test.randomization.seed>
+                        <!-- for junit5 -->
+                        <junit.jupiter.extensions.autodetection.enabled>true
+                        </junit.jupiter.extensions.autodetection.enabled>
+                        <!-- Enabled the parallel test execution feature. -->
+                        <!-- Tests and test classes can be enabled for concurrent execution using @Execution(ExecutionMode.CONCURRENT). -->
+                        <junit.jupiter.execution.parallel.enabled>true
+                        </junit.jupiter.execution.parallel.enabled>
+                        <!-- Tests are by default executed by a single thread; parallel execution is opt-in. -->
+                        <junit.jupiter.execution.parallel.mode.default>same_thread
+                        </junit.jupiter.execution.parallel.mode.default>
+                        <!-- Tests suites are by default executed by a single thread; parallel execution is opt-in. -->
+                        <junit.jupiter.execution.parallel.mode.classes.default>same_thread
+                        </junit.jupiter.execution.parallel.mode.classes.default>
+                        <!-- automatically adjust parallelism based on available cpu/processor cores-->
+                        <junit.jupiter.execution.parallel.config.strategy>dynamic
+                        </junit.jupiter.execution.parallel.config.strategy>
+                    </systemPropertyVariables>
+                    <argLine>@{argLine} -Xms256m -Xmx2048m -XX:+UseG1GC ${extraJavaTestArgs}</argLine>
+					<properties>
+                        <!-- Work around. Surefire does not include enough
+                             information to disambiguate between different
+                             examples and scenarios. -->
+                        <configurationParameters>
+                            cucumber.junit-platform.naming-strategy=long
+                        </configurationParameters>
+                    </properties>
+                </configuration>
+                <executions>
+                    <!--execute all the unit tests-->
+                    <execution>
+                        <id>default-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>${test.unit.pattern}</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <!--execute all the integration tests-->
+                    <execution>
+                        <id>integration-tests</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*.*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>${test.unit.pattern}</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.9.0</version>
+					<configuration>
+						<source>${source.java.version}</source>
+						<target>${target.java.version}</target>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>1.18.46</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.6.1</version>
+					<executions>
+						<!-- Run shade goal on package phase -->
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>shade</goal>
+							</goals>
+							<configuration>
+								<createDependencyReducedPom>false</createDependencyReducedPom>
+								<artifactSet>
+									<excludes>
+									</excludes>
+								</artifactSet>
+								<filters>
+									<filter>
+										<!-- Do not copy the signatures in the META-INF folder.
+										Otherwise, this might cause SecurityExceptions when using the JAR. -->
+										<artifact>*:*</artifact>
+										<excludes>
+											<exclude>META-INF/*.SF</exclude>
+											<exclude>META-INF/*.DSA</exclude>
+											<exclude>META-INF/*.RSA</exclude>
+										</excludes>
+									</filter>
+								</filters>
+								<transformers  combine.children="append">
+									<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+								</transformers>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.6.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${checkstyle.version}</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>validate</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<suppressionsLocation>../tools/maven/suppressions.xml</suppressionsLocation>
+						<includeTestSourceDirectory>true</includeTestSourceDirectory>
+						<configLocation>../tools/maven/checkstyle.xml</configLocation>
+						<logViolationsToConsole>true</logViolationsToConsole>
+						<failOnViolation>true</failOnViolation>
+					</configuration>
+				</plugin>
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>${spotless.version}</version>
+                    <configuration>
+                        <java>
+                            <googleJavaFormat>
+                                <version>1.36.1</version>
+                                <style>AOSP</style>
+                            </googleJavaFormat>
+
+                            <!-- \# refers to the static imports -->
+                            <importOrder>
+                            </importOrder>
+
+                            <removeUnusedImports/>
+                        </java>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>spotless-check</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.11</version>
+                    <configuration>
+                        <skip>${test.skip.coverage}</skip>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<reporting>
+		<plugins>
+		    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.6.0</version>
+				<reportSets>
+					<reportSet>
+					<reports>
+						<report>checkstyle</report>
+					</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

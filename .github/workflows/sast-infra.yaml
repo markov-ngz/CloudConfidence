@@ -1,0 +1,89 @@
+name: Sast Infrastructure code
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - infrastructure
+
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "tools/checkov/.python-version"
+
+      - name: Install checkov
+        run: pip install -r tools/checkov/requirements.txt
+
+      - name: Prepare Checkov results
+        run: mkdir -p checkov-results
+
+      - name: Check Terraform code
+        id: terraform
+        continue-on-error: true
+        run: |
+          set +e
+          checkov --directory infrastructure/aws 2>&1 | tee checkov-results/terraform.txt
+          exit_code=${PIPESTATUS[0]}
+          echo "$exit_code" > checkov-results/terraform.exitcode
+          exit "$exit_code"
+
+      - name: Check Kubernetes code
+        id: kubernetes
+        continue-on-error: true
+        run: |
+          set +e
+          checkov --directory infrastructure/kubernetes 2>&1 | tee checkov-results/kubernetes.txt
+          exit_code=${PIPESTATUS[0]}
+          echo "$exit_code" > checkov-results/kubernetes.exitcode
+          exit "$exit_code"
+
+      - name: Generate Checkov summary
+        if: always()
+        run: |
+          terraform_exit=$(cat checkov-results/terraform.exitcode 2>/dev/null || echo "unknown")
+          kubernetes_exit=$(cat checkov-results/kubernetes.exitcode 2>/dev/null || echo "unknown")
+  
+          terraform_status="❌ Failed"
+          kubernetes_status="❌ Failed"
+  
+          [ "$terraform_exit" = "0" ] && terraform_status="✅ Passed"
+          [ "$kubernetes_exit" = "0" ] && kubernetes_status="✅ Passed"
+  
+          {
+            echo "## Checkov results"
+            echo ""
+            echo "| Target | Result |"
+            echo "|---|---|"
+            echo "| Terraform \`infrastructure/aws\` | $terraform_status |"
+            echo "| Kubernetes \`infrastructure/kubernetes\` | $kubernetes_status |"
+            echo ""
+            echo "Detailed Checkov output is available in the workflow artifact."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Checkov results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkov-results
+          path: checkov-results/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Fail if any Checkov scan failed
+        if: always()
+        run: |
+          terraform_exit=$(cat checkov-results/terraform.exitcode 2>/dev/null || echo "1")
+          kubernetes_exit=$(cat checkov-results/kubernetes.exitcode 2>/dev/null || echo "1")
+  
+          if [ "$terraform_exit" != "0" ] || [ "$kubernetes_exit" != "0" ]; then
+            echo "One or more Checkov scans failed."
+            exit 1
+          fi

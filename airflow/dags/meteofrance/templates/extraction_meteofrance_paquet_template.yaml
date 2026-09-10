@@ -1,0 +1,45 @@
+# meteofrance_pod_template.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: extraction-meteofrance-paquet
+  namespace: airflow-tasks
+  labels:
+    app: extraction_meteofrance_paquet
+spec:
+  containers:
+    - name: base
+      image: extraction-meteofrance-paquet:0.1.0
+      env:
+        # Sink Configuration
+        - name: ETL_SINK_BUCKET
+          value: "cloudconfidence414-landing-zone"
+        - name: ETL_SINK_BASEDIRECTORY
+          value: "extraction/meteofrance-paquet"
+
+        # Meteofrance Api
+        - name: ETL_SOURCE_APPLICATIONID
+          valueFrom:
+            secretKeyRef:
+              name: meteofrance-api
+              key: application_id
+
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key_id
+
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_access_key
+
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_region
+
+  restartPolicy: Never

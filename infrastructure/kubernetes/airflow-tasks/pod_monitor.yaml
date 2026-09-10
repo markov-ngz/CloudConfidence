@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: group_by_test
+  namespace: airflow-tasks
+spec:
+  selector:
+    matchExpressions:
+      - key: "spark-role"
+        operator: "Exists"
+  podMetricsEndpoints:
+    - port: jmx-exporter

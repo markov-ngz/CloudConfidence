@@ -1,0 +1,41 @@
+[
+  {
+    "filename": "input/EXTRACT-MFAROME_1784142667_AROME-OM-NCALED_0.025_SP1_2026-07-15T06_00_00Z_8.grib2",
+    "format": "grib2",
+    "metadata": {
+      "previnum": "DPPaquetAROME-OM",
+      "model": "AROME-OM-NCALED",
+      "grid": "0.025",
+      "package": "SP1",
+      "referenceTime": "2026-07-15T06:00:00Z",
+      "time": "8"
+    },
+    "uri": "input/EXTRACT-MFAROME_1784142667_AROME-OM-NCALED_0.025_SP1_2026-07-15T06_00_00Z_8.grib2"
+  },
+  {
+    "filename": "input/EXTRACT-MFAROME_1784568875_AROME-OM-NCALED_0.025_SP2_2026-07-20T06_00_00Z_26.grib2",
+    "format": "grib2",
+    "metadata": {
+      "previnum": "DPPaquetAROME-OM",
+      "model": "AROME-OM-NCALED",
+      "grid": "0.025",
+      "package": "SP2",
+      "referenceTime": "2026-07-20T06:00:00Z",
+      "time": "26"
+    },
+    "uri": "input/EXTRACT-MFAROME_1784568875_AROME-OM-NCALED_0.025_SP2_2026-07-20T06_00_00Z_26.grib2"
+  },
+  {
+  "filename": "input/EXTRACT-MFAROME_1784143089_AROME-OM-NCALED_0.025_SP3_2026-07-15T06_00_00Z_10.grib2",
+  "format": "grib2",
+  "metadata": {
+    "previnum": "DPPaquetAROME-OM",
+    "model": "AROME-OM-NCALED",
+    "grid": "0.025",
+    "package": "SP3",
+    "referenceTime": "2026-07-15T06:00:00Z",
+    "time": "10"
+  },
+  "uri": "input/EXTRACT-MFAROME_1784143089_AROME-OM-NCALED_0.025_SP3_2026-07-15T06_00_00Z_10.grib2"
+}
+]

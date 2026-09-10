@@ -1,0 +1,52 @@
+# meteofrance_pod_template.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: extraction-meteofrance-observation
+  namespace: airflow-tasks
+  labels:
+    app: extraction_meteofrance_observation
+spec:
+  containers:
+    - name: base
+      image: extraction-meteofrance-observation:0.1.0
+      args:
+          - "--etl.jobid=EXTRACT-MFOBS"
+          - "--etl.source.departmentids={{ params.department_ids | join('|') }}"
+      env:
+        # Force source as csv as ingestion always use spark csv reader 
+        - name: ETL_SOURCE_FORMAT
+          value: csv
+
+        # Sink Configuration
+        - name: ETL_SINK_BUCKET
+          value: "cloudconfidence414-landing-zone"
+        - name: ETL_SINK_BASEDIRECTORY
+          value: "extraction/meteofrance-observation"
+
+        # Meteofrance Api
+        - name: ETL_SOURCE_APPLICATIONID
+          valueFrom:
+            secretKeyRef:
+              name: meteofrance-api
+              key: application_id
+
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key_id
+
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_access_key
+
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_region
+
+  restartPolicy: Never

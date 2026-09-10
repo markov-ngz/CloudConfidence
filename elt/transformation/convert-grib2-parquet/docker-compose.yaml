@@ -1,0 +1,17 @@
+services:
+  conversion-grib2-parquet:
+    container_name: debug-conversion-grib2-parquet
+    image: conversion-grib2-parquet:0.1.0
+    command:
+      - "--etl.jobid=CONV_GRIB"
+      - "--etl.jobrunid=SECONDRUN"
+      - "--etl.uris=s3://cloudconfidence414-landing-zone/extraction/meteofrance-paquet/EXTRACT-MFAROME_1784142669_AROME-OM-NCALED_0.025_SP1_2026-07-15T06:00:00Z_12.grib2"
+      - "--etl.outputdir=s3://cloudconfidence414-landing-zone/conversion/meteofrance-paquet/grib2-parquet/"
+      - "--hadoop.fs.s3a.aws.credentials.provider=software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider"
+    env_file:
+      - .env
+    volumes:
+      - airflow-volume:/airflow/xcom
+
+volumes:
+  airflow-volume:

@@ -1,0 +1,11 @@
+mf_arome_om_paquet_variable;mf_arome_om_paquet_unit;mf_arome_om_observation_variable;mf_arome_om_observation_unit;scale_factor;offset
+Temperature_height_above_ground;K;air_temperature;K;1;0
+Dewpoint_temperature_height_above_ground;K;dew_point_temperature;K;1;0
+Temperature_height_above_ground_1_Hour_Maximum;K;max_air_temperature;K;1;0
+Temperature_height_above_ground_1_Hour_Minimum;K;min_air_temperature;K;1;0
+Relative_humidity_height_above_ground;%;relative_humidity;pourcentage;1;0
+Wind_direction_from_which_blowing_height_above_ground;degree_true;wind_direction;degré (rose de 360);1;0
+Wind_speed_height_above_ground;m/s;wind_speed;m/s;1;0
+Rain_precipitation_rate_surface_26_Hour_Accumulation;kg.m-2.s-1;hourly_precipitation;mm;3600;0
+Pressure_surface;Pa;station_pressure;Pa;1;0
+Pressure_reduced_to_MSL_msl;Pa;sea_level_pressure;Pa;1;0

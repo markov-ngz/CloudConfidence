@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: placeholder
+  namespace: airflow-tasks
+spec:
+  containers:
+    - name: base
+      image: check-xcom:0.1.0
+      resources:
+        requests:
+          memory: "512Mi"
+          cpu: "250m"
+        limits:
+          memory: "1Gi"
+          cpu: "500m"
+  restartPolicy: Never

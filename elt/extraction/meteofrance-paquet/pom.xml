@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+      <groupId>ngz.cloudconfidence</groupId>
+      <artifactId>parent-pom</artifactId>
+      <version>2</version>
+      <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>extraction-meteofrance-paquet</artifactId>
+  <version>0.1.0</version>
+
+  <name>extraction-meteofrance-paquet</name>
+
+    <profiles>
+
+    </profiles>
+
+  <properties>
+  </properties>
+
+  <dependencyManagement>
+      <dependencies>
+      </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+      <dependency>
+          <groupId>tools.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>3.1.2</version>
+          <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-core -->
+      <dependency>
+          <groupId>tools.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <version>3.1.2</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>ngz.extraction</groupId>
+          <artifactId>filesink-awsbucket</artifactId>
+          <version>0.1.0</version>
+      </dependency>
+      <dependency>
+          <groupId>ngz.extraction</groupId>
+          <artifactId>filesource-meteofrance-paquet</artifactId>
+          <version>0.1.0</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-slf4j-impl</artifactId>
+          <version>${log4j.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <version>${log4j.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <version>${log4j.version}</version>
+          <scope>compile</scope>
+      </dependency>
+    <dependency>
+      <groupId>ngz.extraction</groupId>
+      <artifactId>extraction-core</artifactId>
+      <version>0.1.1</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+      <finalName>app</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.6.0</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <createDependencyReducedPom>false</createDependencyReducedPom>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>ngz.cloudconfidence.elt.extraction.ExtractData</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+                <mainClass>ngz.cloudconfidence.elt.extraction.ExtractData</mainClass>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>ngz.cloudconfidence.elt.extraction.ExtractData</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+    <pluginManagement>
+    </pluginManagement>
+  </build>
+</project>

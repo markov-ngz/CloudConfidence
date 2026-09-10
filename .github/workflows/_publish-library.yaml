@@ -1,0 +1,51 @@
+name: Publish package to GitHub Packages
+
+permissions:
+  contents: read
+  packages: write
+
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Folder of the library to publish"
+        required: true
+        type: string
+      deploy_command:
+        description: "Command to deploy the package"
+        default: mvn --batch-mode deploy
+        required: false
+        type: string
+  workflow_dispatch:
+    inputs:
+      working-directory:
+        description: "Folder of the library to publish"
+        required: true
+        type: string
+      deploy_command:
+        description: "Command to deploy the package"
+        default: mvn --batch-mode deploy
+        required: false
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: "maven"
+          cache-dependency-path: "${{ inputs.working-directory }}/pom.xml"
+          server-id: github
+
+      - name: Publish package
+        working-directory: ${{ inputs.working-directory }}
+        run: |
+          ${{ inputs.deploy_command }} 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

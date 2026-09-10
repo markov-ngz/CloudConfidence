@@ -1,0 +1,27 @@
+variableName;variableUnit
+airTemperature;K
+dewPointTemperature;K
+maxAirTemperature;K
+minAirTemperature;K
+relativeHumidity;pourcentage
+maxRelativeHumidity;pourcentage
+minRelativeHumidity;pourcentage
+windDirection;degré (rose de 360)
+windSpeed;m/s
+maxWindDirection;degré (rose de 360)
+maxWindSpeed;m/s
+gustDirection;degré (rose de 360)
+maxWindGust;m/s
+hourlyPrecipitation;mm
+soilTemperature10cm;K
+soilTemperature20cm;K
+soilTemperature50cm;K
+soilTemperature100cm;K
+groundStateCode;
+snowDepth;m
+horizontalVisibility;m
+totalCloudCover;octas
+sunshineDuration;min
+hourlyGlobalRadiation;J/m²
+stationPressure;Pa
+seaLevelPressure;Pa

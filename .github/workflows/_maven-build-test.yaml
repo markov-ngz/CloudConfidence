@@ -1,0 +1,136 @@
+name: Maven CI
+
+permissions:
+  contents: read
+  packages: read
+  id-token: write
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        type: string
+        description: working directory
+      java-version:
+        type: string
+        description: java version
+        default: '21'
+    secrets:
+      ghp-read-package:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: ${{ inputs.working-directory }}/pom.xml
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Build and Install
+        run: mvn -B clean install -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Share Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-output-${{ github.run_id }}
+          path: ${{ inputs.working-directory }}/**/target/
+
+  test:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: ${{ inputs.working-directory }}/pom.xml
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: build-output-${{ github.run_id }}
+          path: ${{ inputs.working-directory }}
+
+      - name: Run Tests with Coverage
+        run: |
+          mvn test \
+            -Ptest-coverage \
+            -Dmaven.test.failure.ignore=true \
+            -Dlog.dir=${{ runner.temp }}/logs
+
+      - name: Generate JaCoCo Report
+        run: mvn jacoco:report
+
+      - name: Generate Test Summary
+        run: |
+          TEST_COUNT=$(find . -path "*/target/surefire-reports/*.xml" \
+          -exec grep -hPo '<testsuite\b[^>]*\btests="\K[0-9]+' {} \; \
+          | awk '{sum += $1} END {print sum+0}')
+
+          FAILURE_COUNT=$(find . -path "*/target/surefire-reports/*.xml" \
+          -exec grep -hPo '<testsuite\b[^>]*\failures="\K[0-9]+' {} \; \
+          | awk '{sum += $1} END {print sum+0}')
+
+          SKIPPED_COUNT=$(find . -path "*/target/surefire-reports/*.xml" \
+          -exec grep -hPo '<testsuite\b[^>]*\skipped="\K[0-9]+' {} \; \
+          | awk '{sum += $1} END {print sum+0}')
+
+          ERROR_COUNT=$(find . -path "*/target/surefire-reports/*.xml" \
+          -exec grep -hPo '<testsuite\b[^>]*\errors="\K[0-9]+' {} \; \
+          | awk '{sum += $1} END {print sum+0}')
+
+          JACOCO_CSV=$(find . -path "*/target/site/jacoco/jacoco.csv" | head -1)
+          if [ -n "$JACOCO_CSV" ]; then
+            COVERAGE=$(awk -F',' 'NR>1 {missed+=$4; covered+=$5} END {printf "%.1f", covered/(missed+covered)*100}' "$JACOCO_CSV")
+          else
+            COVERAGE="N/A"
+          fi
+
+          echo "## 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Tests**: $TEST_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Passed**: $((TEST_COUNT - FAILURE_COUNT - SKIPPED_COUNT - ERROR_COUNT))" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed**: $FAILURE_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Errors**: $ERROR_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Skipped**: $SKIPPED_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Code Coverage**: $COVERAGE%" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📊 [View Full Test Report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload JaCoCo Report
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: jacoco-report
+          path: |
+            **/target/site/jacoco/
+            **/target/site/jacoco-aggregate/
+
+      - name: Upload Logs on Failure
+        uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: test-logs
+          path: ${{ runner.temp }}/logs/

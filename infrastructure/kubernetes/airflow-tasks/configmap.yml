@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: model-registry-config
+  namespace : airflow-tasks
+data:
+  prod_model_registry.yaml: |
+    models:
+      - name: SeedMeteoFranceObservationVariable
+        materialized: file
+        location: "s3a://cloudconfidence414-data-warehouse/referentiels/meteofrance_observation_variable.csv"
+        file_format: csv
+        read_options:
+          header: true
+          delimiter: ";"
+    
+      - name: SeedMeteoFranceStation
+        materialized: file
+        location: "s3a://cloudconfidence414-data-warehouse/referentiels/meteofrance_stations.csv"
+        file_format: csv
+        read_options:
+          header: true
+          delimiter: ";"
+    
+      - name: SeedStandardizedUnit
+        materialized: file
+        location: "s3a://cloudconfidence414-data-warehouse/referentiels/standardized_unit.csv"
+        file_format: csv
+        read_options:
+          header: true
+          delimiter: ";"
+    
+      - name: SeedStandardizedVariable
+        materialized: file
+        location: "s3a://cloudconfidence414-data-warehouse/referentiels/standardized_variable.csv"
+        file_format: csv
+        read_options:
+          header: true
+          delimiter: ";"
+    
+      - name: SourceMeteoFrancePaquet
+        materialized: file
+        location: "s3a://cloudconfidence414-landing-zone/conversion/meteofrance-paquet/grib2-parquet/"
+        file_format: parquet
+    
+      - name: SourceMeteoFranceObservation
+        materialized: file
+        location: "s3a://cloudconfidence414-landing-zone/extraction/meteofrance-observation/"
+        file_format: csv
+        read_options:
+          header: true
+          delimiter: ";"
+    
+      - name: StgMeteoFranceObservationModel
+        materialized: table
+        location: staging.stg_meteofrance_observation
+    
+      - name: StgMeteoFrancePaquetModel
+        materialized: table
+        location: staging.stg_meteofrance_paquet
+    
+      - name: IntStationGridMappingModel
+        materialized: ephemeral
+    
+      - name: IntUnpivotObservationModel
+        materialized: ephemeral
+    
+      - name: IntStationForecastObservationModel
+        materialized: table
+        location: intermediate.int_station_forecast_observation
+    
+      - name: IntAggForecastErrorOverTimeModel
+        materialized: ephemeral
+        # ephemeral as iceberg-spark 4.2 not compatible
+        # and following issue was encountered :  https://github.com/apache/spark/issues/56515
+        # materialized: table
+        # location: intermediate.int_agg_forecast_error_over_time
+    
+      - name: MartForecastErrorOverTimeModel
+        materialized: table
+        location: mart.mart_forecast_error_over_time

@@ -1,0 +1,1 @@
+java -jar target/app.jar -f ./input/EXTRACT-MFAROME_1784142658_AROME-OM-NCALED_0.025_SP1_2026-07-15T06_00_00Z_0.grib2 -o ./audit.txt

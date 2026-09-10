@@ -1,0 +1,157 @@
+spark:
+  apiVersion: sparkoperator.k8s.io/v1beta2
+  kind: SparkApplication
+  metadata:
+    namespace: airflow-tasks
+    name: debug
+  spec:
+    type: Java
+    mode: cluster
+    sparkVersion: 4.1.2
+    restartPolicy:
+      type: Never
+    image: spark-iceberg-aws:0.1.0
+    imagePullPolicy: IfNotPresent
+    mainApplicationFile: "s3a://cloudconfidence414-artifact-registry/jar/transformation-test-0.1.0.jar"
+    mainClass: ngz.cloudconfidence.elt.transformation.CloudConfidenceApplication
+    arguments:
+      - "--select=model:{{ params.model_name }}"
+      - '--modelregistry.path=/opt/registry/prod_model_registry.yaml'
+    hadoopConf:
+      fs.s3a.aws.credentials.provider: "software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider"
+    sparkConf:
+      # --- Iceberg extensions  ---
+      spark.sql.extensions: "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions"
+      spark.sql.defaultCatalog: "rest"
+      spark.sql.catalog.rest: "org.apache.iceberg.spark.SparkCatalog"
+      spark.sql.catalog.rest.type: "rest"
+      spark.sql.catalog.rest.uri: "http://polaris.polaris.svc.cluster.local:8181/api/catalog"
+      spark.sql.catalog.rest.warehouse: "dev_catalog"
+      spark.sql.catalog.rest.auth.type: "oauth2"
+      spark.sql.catalog.rest.oauth2-server-uri: "http://polaris.polaris.svc.cluster.local:8181/api/catalog/v1/oauth/tokens"
+      spark.sql.catalog.rest.scope: "PRINCIPAL_ROLE:ALL"
+      spark.sql.catalog.rest.token-refresh-enabled: "true"
+      spark.sql.catalog.rest.header.X-Iceberg-Access-Delegation: "vended-credentials"
+      # --- S3 authentication
+      spark.hadoop.fs.s3a.aws.credentials.provider: "software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider"
+      # --- Generic conf ---
+      spark.yarn.maxAppAttempts: "1"
+      # Comet spark
+      spark.driver.extraClassPath: "local:///opt/spark/extra-jars/comet-spark-spark4.1_2.13-1.0.0.jar"
+      spark.executor.extraClassPath: "local:///opt/spark/extra-jars/comet-spark-spark4.1_2.13-1.0.0.jar"
+      spark.plugins: "org.apache.spark.CometPlugin"
+      spark.shuffle.manager: "org.apache.spark.sql.comet.execution.shuffle.CometCelebornShuffleManager"
+      spark.comet.explain.fallback.enabled: "true"
+
+      # Celeborn Shuffle Manager Settings
+      spark.shuffle.sort.io.plugin.class: "org.apache.spark.shuffle.celeborn.CelebornShuffleDataIO"
+      spark.serializer: "org.apache.spark.serializer.KryoSerializer"
+      spark.celeborn.master.endpoints: "celeborn-master-0.celeborn-master-svc.celeborn:9097"
+      # Disable Spark ESS (Celeborn handles shuffle storage)
+      spark.shuffle.service.enabled: "false"
+      # Disable replication for single-worker testing
+      spark.celeborn.client.push.replicate.enabled: "false"
+
+      # Dynamic Allocation Configurations
+      spark.dynamicAllocation.enabled: "true"
+      spark.dynamicAllocation.minExecutors: "0"
+      spark.dynamicAllocation.maxExecutors: "2"
+      spark.dynamicAllocation.executorIdleTimeout: "30s"
+      spark.dynamicAllocation.shuffleTracking.enabled: "false" # Must be false when using Celeborn Remote Shuffle Service
+      # AQE Configurations
+      spark.sql.adaptive.enabled: "true"
+      spark.sql.adaptive.localShuffleReader.enabled: "false"
+      spark.sql.adaptive.skewJoin.enabled: "true"
+    deps:
+      jars:
+        - local:///opt/spark/extra-jars/iceberg-aws-bundle-1.11.0.jar
+        - local:///opt/spark/extra-jars/iceberg-spark-runtime-4.1_2.13-1.11.0.jar
+        - local:///opt/spark/extra-jars/comet-spark-spark4.1_2.13-1.0.0.jar
+    volumes:
+      - name: model-registry-volume
+        configMap:
+          name: model-registry-config
+          items:
+            - key: prod_model_registry.yaml
+              path: prod_model_registry.yaml
+      - name: airflow-xcom-volume
+        emptyDir: { }
+    driver:
+      cores: 1
+      memory: 512m
+      serviceAccount: spark-operator-spark
+      sidecars:
+        - name: airflow-xcom-sidecar
+          image: alpine
+          command: ["sh", "-c", 'trap "exit 0" INT; while true; do sleep 1; done;']
+          volumeMounts:
+            - name: airflow-xcom-volume
+              mountPath: /airflow/xcom
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "10Mi"
+      volumeMounts:
+        - name: model-registry-volume
+          mountPath: /opt/registry/prod_model_registry.yaml
+          subPath: prod_model_registry.yaml
+          readOnly: true
+        - name: airflow-xcom-volume
+          mountPath: /airflow/xcom
+      env:
+        - name: CC_POLARIS_CREDENTIAL
+          valueFrom:
+            secretKeyRef:
+              name: polaris-credentials
+              key: client_credentials
+
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key_id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_access_key
+
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_region
+
+    executor:
+      instances: 1
+      cores: 1
+      memory: 512m
+      env:
+        - name: CC_POLARIS_CREDENTIAL
+          valueFrom:
+            secretKeyRef:
+              name: polaris-credentials
+              key: client_credentials
+
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key_id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_access_key
+
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_region
+  monitoring:
+    exposeDriverMetrics: true
+    exposeExecutorMetrics: true
+    prometheus:
+      jmxExporterJar: "/opt/spark/jars/jmx_prometheus_javaagent-1.1.0.jar"
+      port: 8090

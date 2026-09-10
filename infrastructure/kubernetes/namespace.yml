@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: polaris
+  annotations:
+    description: Polaris Catalog to write Iceberg tables
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spark-operator
+  annotations:
+    description: Technical namespace for spark kubernetes operator
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: airflow
+  annotations:
+    description: Technical namespace for airflow
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yunikorn
+  annotations:
+    description: Technical namespace for yunikorn
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: celeborn
+  annotations:
+    description: Technical namespace for celeborn
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fluent-bit
+  annotations:
+    description: Technical namespace for fluentbit
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: airflow-tasks
+  annotations:
+    description: Airflow namespace where tasks can be created and job ran.
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  annotations:
+    description: Technical namespace for monitoring ( prometheus & grafana stack )
+
+---

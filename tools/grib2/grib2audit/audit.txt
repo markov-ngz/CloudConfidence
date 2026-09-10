@@ -1,0 +1,93 @@
+
+╔══════════════════════════════════════════════════╗
+║           GRIB2 STRUCTURE AUDIT                  ║
+╚══════════════════════════════════════════════════╝
+
+▶ VARIABLE : Pressure_reduced_to_MSL_msl
+  unit        : Pa
+  description : Pressure reduced to MSL @ Mean sea level
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [101413,9219 → 102448,9219]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : Relative_humidity_height_above_ground
+  unit        : %
+  description : Relative humidity @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [2,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [33,6641 → 99,1328]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : Temperature_height_above_ground
+  unit        : K
+  description : Temperature @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [2,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [284,6806 → 300,3122]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : Wind_direction_from_which_blowing_height_above_ground
+  unit        : degree_true
+  description : Wind direction (from which blowing) @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [10,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [0,2969 → 359,2969]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : Wind_speed_height_above_ground
+  unit        : m/s
+  description : Wind speed @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [10,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [0,0211 → 12,1578]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : u-component_of_wind_height_above_ground
+  unit        : m/s
+  description : u-component of wind @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [10,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [-11,9070 → 4,3664]
+  NaN count   : 0 / 255 811 (0,0%)
+
+▶ VARIABLE : v-component_of_wind_height_above_ground
+  unit        : m/s
+  description : v-component of wind @ Specified height level above ground
+  dims        : time(1) x z(1) x y(491) x x(521) = 255 811 grid points
+  time range  : 2026-07-15T06:00:00Z → 2026-07-15T06:00:00Z
+  z-axis type : Height | unit: m
+  z values    : [10,0 ]
+  bbox        : lat[-26,000 → -13,750] lon[158,500 → 171,500]
+  java type   : float
+  fill value  : :missing_value = NaNf
+  data range  : [-8,3288 → 9,3197]
+  NaN count   : 0 / 255811 (0,0%)

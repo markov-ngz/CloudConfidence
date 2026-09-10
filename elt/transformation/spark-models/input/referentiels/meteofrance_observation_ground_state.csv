@@ -1,0 +1,11 @@
+groundStateCode;groundStateDescription
+0;surface du sol sèche (sans fissure et sans poussière ni sable meuble en quantité appréciable)
+1;surface du sol humide
+2;surface du sol mouillée (eau stagnante en mares, petites ou grandes, à la surface)
+3;inondé
+4;surface du sol gelée
+5;verglas au sol
+6;poussière ou sable meuble sec ne couvrant pas complètement le sol
+7;couche fine de poussière ou de sable meuble couvrant complètement le sol
+8;couche épaisse ou d’épaisseur moyenne de poussière ou de sable meuble couvrant complètement le sol
+9;très sec avec fissures

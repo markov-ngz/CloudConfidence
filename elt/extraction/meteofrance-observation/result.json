@@ -1,0 +1,14 @@
+{
+  "data": {
+    "failures": [],
+    "successes": [
+      {
+        "filename": "extraction/meteofrance-observation/EXTRACT-MFOBS_1783965534_package-obs-dpt-988.csv",
+        "format": "csv",
+        "uri": "s3://cloudconfidence414-landing-zone/extraction/meteofrance-observation/EXTRACT-MFOBS_1783965534_package-obs-dpt-988.csv"
+      }
+    ]
+  },
+  "object": "ngz.cloudconfidence.elt.extraction.ExtractionResult",
+  "status": "success"
+}
